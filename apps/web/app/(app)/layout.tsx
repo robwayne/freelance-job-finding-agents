@@ -8,20 +8,21 @@ export default async function AppLayout({ children }: LayoutProps<"/">) {
   return (
     <div className="flex min-h-screen flex-col">
       <header className="border-b border-zinc-200 bg-white">
-        <div className="mx-auto flex h-12 max-w-[1600px] items-center gap-6 px-4">
-          <Link href="/jobs" className="text-sm font-semibold">
+        <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-x-6 gap-y-1 px-4 py-2">
+          <Link href="/jobs" className="text-sm font-semibold whitespace-nowrap">
             Job Finder
           </Link>
-          <nav className="flex gap-1 text-sm">
+          <nav className="order-last -mx-1 flex w-full gap-1 overflow-x-auto text-sm sm:order-none sm:w-auto">
             <NavLink href="/jobs">Jobs</NavLink>
             <NavLink href="/agents">Agents</NavLink>
             <NavLink href="/runs">Runs</NavLink>
             <NavLink href="/settings">Settings</NavLink>
+            <NavLink href="/status">Status</NavLink>
           </nav>
           <div className="ml-auto flex items-center gap-3 text-xs text-zinc-500">
-            <span>{email}</span>
+            <span className="hidden sm:inline">{email}</span>
             <form action={signOut}>
-              <button className="rounded px-2 py-1 hover:bg-zinc-100 hover:text-zinc-900">Sign out</button>
+              <button className="whitespace-nowrap rounded px-2 py-1 hover:bg-zinc-100 hover:text-zinc-900">Sign out</button>
             </form>
           </div>
         </div>
