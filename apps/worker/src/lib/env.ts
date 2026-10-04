@@ -15,6 +15,8 @@ const EnvSchema = z.object({
   UPWORK_GRANT_TYPE: z.enum(["authorization_code", "client_credentials"]).default("authorization_code"),
   UPWORK_TENANT_ID: z.string().optional(),
   FIXTURES_DIR: z.string().optional(),
+  /** Apply pending migrations and seed defaults when the long-running worker starts. */
+  AUTO_MIGRATE: z.preprocess((v) => !(v === "0" || v === "false"), z.boolean()).default(true),
   WORKER_TICK_SECONDS: z.coerce.number().min(1).default(15),
   LOG_LEVEL: z.enum(["trace", "debug", "info", "warn", "error", "fatal"]).default("info"),
   LOG_PRETTY: z.preprocess((v) => v === "1" || v === "true", z.boolean()).default(false),

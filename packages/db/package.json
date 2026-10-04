@@ -12,7 +12,8 @@
     "generate": "drizzle-kit generate",
     "migrate": "tsx src/migrate.ts",
     "seed": "tsx src/seed.ts",
-    "typecheck": "tsc -p tsconfig.json"
+    "typecheck": "tsc -p tsconfig.json",
+    "sql": "tsx src/build-setup-sql.ts"
   },
   "dependencies": {
     "@jf/scoring": "workspace:*",

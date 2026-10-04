@@ -37,13 +37,26 @@ Add `ANTHROPIC_API_KEY` to `.env` and drop `--mock-llm` to score with the real m
 
 ## Setup
 
+### Database (no local tools needed)
+
+Open Supabase > **SQL Editor**, paste the contents of [`supabase/setup.sql`](supabase/setup.sql) and run it. That one script:
+
+- creates the tables and enables RLS on all of them
+- revokes every privilege from the `anon` and `authenticated` roles
+- seeds the global settings and the default agent
+
+It's safe to run again, and it never overwrites edits made in the app.
+
+After that, schema changes apply themselves. The worker runs pending migrations and seeds missing defaults every time it starts, and it skips anything `setup.sql` already applied. Set `AUTO_MIGRATE=false` to turn that off.
+
+### Local development (optional)
+
 Requires Node 20+ and pnpm 10.
 
 1. `cp .env.example .env` and fill it in (see below).
 2. `pnpm install`
-3. `pnpm db:migrate` creates the tables, enables RLS on all of them, and revokes all privileges from Supabase's `anon` and `authenticated` roles.
-4. `pnpm db:seed` creates the default agent and the global settings row. It's idempotent and never overwrites edits.
-5. `pnpm dev` runs the worker and the web app (http://localhost:3000) together.
+3. `pnpm db:migrate && pnpm db:seed`, or rely on the worker doing both on startup.
+4. `pnpm dev` runs the worker and the web app (http://localhost:3000) together.
 
 ### Supabase
 
@@ -96,6 +109,7 @@ No setup needed. The worker reads top-level "SEEKING FREELANCER" posts from the 
 | `pnpm rescore` | Recompute priority for all matches (no model calls) |
 | `pnpm db:migrate` / `pnpm db:seed` | Apply migrations / create defaults |
 | `pnpm db:generate` | Generate a migration after editing `packages/db/src/schema.ts` |
+| `pnpm db:sql` | Regenerate `supabase/setup.sql` from the migrations (commit the result) |
 | `pnpm test` | Unit, query (in-process Postgres via PGlite) and end-to-end tests |
 | `pnpm typecheck` | Type check every package |
 
@@ -168,6 +182,8 @@ priority = 100 × Σ(weightᵢ × componentᵢ) / Σ(weightᵢ)
    - `APP_URL` (your Vercel or custom domain)
 3. Deploy, then add `https://<domain>/auth/callback` to Supabase Redirect URLs and set the Supabase Site URL to the domain.
 
+Vercel deploys production from `main`.
+
 The web app uses the transaction pooler, which is the right choice for serverless functions. Each function instance keeps a small pool (3 connections).
 
 GitHub Pages won't work. It serves static files only, and this app needs a server for auth, database access and server actions. All three must stay server side so that no Supabase key or table data is exposed to the browser.
@@ -184,7 +200,7 @@ docker run --rm --env-file .env job-finder-worker node dist/cli/rescore.js
 
 The worker needs `DATABASE_URL_SESSION` and `ANTHROPIC_API_KEY`, plus the Upwork variables once your key is approved. It logs JSON to stdout, one line per stage with `runId`, `agentId`, `stage` and `source`. Set `LOG_PRETTY=1` for human-readable logs. On `SIGTERM` it finishes the current run before exiting.
 
-Run migrations from your machine or CI with `pnpm db:migrate` before deploying a new version.
+The worker applies pending migrations on startup, so deploying a new worker image is enough to upgrade the schema. Deploy the worker before the web app when a release changes the schema.
 
 ## Tests
 

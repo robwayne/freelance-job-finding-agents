@@ -14,7 +14,7 @@ RUN pnpm --filter @jf/worker build
 RUN pnpm deploy --filter @jf/worker --prod --legacy /out
 
 FROM base AS runtime
-ENV NODE_ENV=production FIXTURES_DIR=/app/fixtures
+ENV NODE_ENV=production FIXTURES_DIR=/app/fixtures MIGRATIONS_DIR=/app/migrations
 WORKDIR /app
 COPY --from=build /out/node_modules ./node_modules
 COPY --from=build /out/package.json ./package.json

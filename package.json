@@ -3,7 +3,9 @@
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.28.0",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "concurrently -k -n worker,web -c blue,green \"pnpm --filter @jf/worker dev\" \"pnpm --filter @jf/web dev\"",
     "worker:once": "pnpm --filter @jf/worker once",
@@ -13,7 +15,8 @@
     "db:seed": "pnpm --filter @jf/db seed",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
-    "test": "vitest run"
+    "test": "vitest run",
+    "db:sql": "pnpm --filter @jf/db sql"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

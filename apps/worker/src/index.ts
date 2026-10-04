@@ -1,11 +1,13 @@
 import { createDb } from "@jf/db";
 import { env, requireDbUrl } from "./lib/env";
 import { logger } from "./lib/logger";
+import { migrateAndSeed } from "./lib/migrations";
 import { Worker } from "./worker";
 
 if (!env.ANTHROPIC_API_KEY) logger.warn("ANTHROPIC_API_KEY is not set: runs will fail at the scoring stage");
 
 const { db, close } = createDb(requireDbUrl(), { mode: "session" });
+if (env.AUTO_MIGRATE) await migrateAndSeed(db, logger);
 const worker = new Worker(db, { logger });
 
 let signals = 0;

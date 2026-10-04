@@ -24,8 +24,9 @@
 
 1. Edit `packages/db/src/schema.ts`.
 2. `pnpm db:generate` writes a migration to `packages/db/migrations`. Commit it.
-3. Add queries in `packages/db/src/queries/*` with a PGlite test in `queries.test.ts`.
-4. `pnpm db:migrate` applies it to Supabase (session pooler).
+3. `pnpm db:sql` regenerates `supabase/setup.sql`. Commit it; a test fails if it's stale.
+4. Add queries in `packages/db/src/queries/*` with a PGlite test in `queries.test.ts`.
+5. The worker applies the migration on its next start (or run `pnpm db:migrate`).
 
 Hand-written SQL goes in a custom migration (`pnpm --filter @jf/db exec drizzle-kit generate --custom --name <name>`).
 
