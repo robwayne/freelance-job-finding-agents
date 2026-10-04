@@ -57,7 +57,7 @@ Requires Node 20+ and pnpm 10.
   - Add `http://localhost:3000/auth/callback` and `https://<your-domain>/auth/callback` to Redirect URLs.
 - **Optional, cross-device links:** the default link only works in the browser that requested it (PKCE). To open links on another device, edit the Magic Link email template to link to `{{ .SiteURL }}/auth/callback?token_hash={{ .TokenHash }}&type=email`. The callback route accepts both forms.
 - **Allowlist:** `ALLOWED_EMAILS` is checked in three places: before a link is sent, in the auth callback, and on every request by `proxy.ts`. If you also want Supabase itself to reject strangers, create your two users under Authentication > Users and turn off "Allow new users to sign up".
-- **Keys:** the anon key and Supabase URL are read only on the server. The browser never receives them and never talks to Supabase directly. Even if someone has the anon key, RLS (enabled, no policies) plus the revoked grants mean it can't read anything.
+- **Keys:** `SUPABASE_ANON_KEY` takes the publishable key (`sb_publishable_…`) or the legacy anon key. Never use the secret or `service_role` key; the web app doesn't need it. The key and Supabase URL are read only on the server. The browser never receives them and never talks to Supabase directly. Even if someone has the anon key, RLS (enabled, no policies) plus the revoked grants mean it can't read anything.
 
 ### Upwork API credentials
 
