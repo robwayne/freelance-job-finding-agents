@@ -1,0 +1,24 @@
+{
+  "name": "freelance-job-finder",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@10.28.0",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "concurrently -k -n worker,web -c blue,green \"pnpm --filter @jf/worker dev\" \"pnpm --filter @jf/web dev\"",
+    "worker:once": "pnpm --filter @jf/worker once",
+    "rescore": "pnpm --filter @jf/worker rescore",
+    "db:generate": "pnpm --filter @jf/db generate",
+    "db:migrate": "pnpm --filter @jf/db migrate",
+    "db:seed": "pnpm --filter @jf/db seed",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "concurrently": "^9.2.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
+  }
+}
