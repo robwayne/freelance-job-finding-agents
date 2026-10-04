@@ -1,0 +1,618 @@
+{
+  "data": {
+    "marketplaceJobPostingsSearch": {
+      "totalCount": 12,
+      "edges": [
+        {
+          "node": {
+            "id": "1700000000000000001",
+            "title": "AI chatbot trained on our help center and PDFs",
+            "description": "We run a B2B SaaS with ~400 help center articles and product PDFs. We want a support chatbot on our site and in Intercom that answers customer questions from our docs with citations and hands off to a human when unsure. Must support re-indexing when docs change. Looking for someone who has shipped RAG in production.",
+            "ciphertext": "~010000000000000001",
+            "createdDateTime": "2026-10-01T09:00:00.000Z",
+            "publishedDateTime": "2026-10-01T09:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "6000",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 4,
+            "skills": [
+              {
+                "name": "openai-api",
+                "prettyName": "OpenAI API"
+              },
+              {
+                "name": "langchain",
+                "prettyName": "LangChain"
+              },
+              {
+                "name": "python",
+                "prettyName": "Python"
+              }
+            ],
+            "client": {
+              "totalHires": 22,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "85000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 22,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000002",
+            "title": "Meta Conversions API + TikTok Events API for Shopify store",
+            "description": "Our pixel-only tracking is losing ~30% of purchases. Need server side tracking: Meta CAPI and TikTok Events API with event deduplication, plus Google Ads enhanced conversions. We use Shopify Plus and GTM. Please describe your experience with server side GTM.",
+            "ciphertext": "~010000000000000002",
+            "createdDateTime": "2026-10-01T06:00:00.000Z",
+            "publishedDateTime": "2026-10-01T06:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "0.0",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": "DEFAULT",
+            "hourlyBudgetMin": {
+              "rawValue": "60",
+              "currency": "USD"
+            },
+            "hourlyBudgetMax": {
+              "rawValue": "95",
+              "currency": "USD"
+            },
+            "totalApplicants": 7,
+            "skills": [
+              {
+                "name": "google-tag-manager",
+                "prettyName": "Google Tag Manager"
+              },
+              {
+                "name": "facebook-conversions-api",
+                "prettyName": "Facebook Conversions API"
+              }
+            ],
+            "client": {
+              "totalHires": 15,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "42000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 15,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000003",
+            "title": "Automate lead intake: Typeform -> HubSpot -> Slack with AI summaries",
+            "description": "Leads come in through Typeform and email. We want them created in HubSpot, enriched, scored and summarized by AI, then posted to the right Slack channel. Also draft a first reply email for the rep to approve. Currently using Zapier but it's a mess.",
+            "ciphertext": "~010000000000000003",
+            "createdDateTime": "2026-10-01T02:00:00.000Z",
+            "publishedDateTime": "2026-10-01T02:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "2500",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 9,
+            "skills": [
+              {
+                "name": "hubspot",
+                "prettyName": "HubSpot"
+              },
+              {
+                "name": "zapier",
+                "prettyName": "Zapier"
+              },
+              {
+                "name": "slack-api",
+                "prettyName": "Slack API"
+              }
+            ],
+            "client": {
+              "totalHires": 8,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "23000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 8,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000004",
+            "title": "Add AI summarization feature to our Django app",
+            "description": "We have a Django + React app for legal case notes. Want an AI feature that summarizes long case notes and extracts key dates and parties into structured fields. Need evals and cost controls. Existing codebase, good test coverage.",
+            "ciphertext": "~010000000000000004",
+            "createdDateTime": "2026-09-30T16:00:00.000Z",
+            "publishedDateTime": "2026-09-30T16:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "0.0",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": "DEFAULT",
+            "hourlyBudgetMin": {
+              "rawValue": "80",
+              "currency": "USD"
+            },
+            "hourlyBudgetMax": {
+              "rawValue": "120",
+              "currency": "USD"
+            },
+            "totalApplicants": 12,
+            "skills": [
+              {
+                "name": "django",
+                "prettyName": "Django"
+              },
+              {
+                "name": "openai-api",
+                "prettyName": "OpenAI API"
+              },
+              {
+                "name": "react",
+                "prettyName": "React"
+              }
+            ],
+            "client": {
+              "totalHires": 40,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "150000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 40,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000005",
+            "title": "Starter project: build simple chatbot",
+            "description": "This is a starter project to test candidates before a larger engagement. Build a simple chatbot.",
+            "ciphertext": "~010000000000000005",
+            "createdDateTime": "2026-10-01T10:00:00.000Z",
+            "publishedDateTime": "2026-10-01T10:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "200",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 3,
+            "skills": [
+              {
+                "name": "chatbot",
+                "prettyName": "Chatbot"
+              }
+            ],
+            "client": {
+              "totalHires": 10,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "30000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 10,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000006",
+            "title": "WordPress theme tweaks",
+            "description": "Need small CSS fixes on our WordPress theme. Payment not verified yet but will be soon.",
+            "ciphertext": "~010000000000000006",
+            "createdDateTime": "2026-10-01T08:00:00.000Z",
+            "publishedDateTime": "2026-10-01T08:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "150",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 2,
+            "skills": [
+              {
+                "name": "wordpress",
+                "prettyName": "WordPress"
+              },
+              {
+                "name": "css",
+                "prettyName": "CSS"
+              }
+            ],
+            "client": {
+              "totalHires": 2,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "500",
+                "currency": "USD"
+              },
+              "verificationStatus": "NOT_VERIFIED",
+              "totalReviews": 2,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000007",
+            "title": "Build an AI agent for customer emails",
+            "description": "Looking for an expert to build an AI agent that reads support emails and drafts responses in Gmail. Need to integrate with our Shopify data.",
+            "ciphertext": "~010000000000000007",
+            "createdDateTime": "2026-09-30T06:00:00.000Z",
+            "publishedDateTime": "2026-09-30T06:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "4000",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 35,
+            "skills": [
+              {
+                "name": "gmail-api",
+                "prettyName": "Gmail API"
+              },
+              {
+                "name": "openai-api",
+                "prettyName": "OpenAI API"
+              }
+            ],
+            "client": {
+              "totalHires": 20,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "60000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 20,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000008",
+            "title": "Data entry from PDFs into spreadsheet",
+            "description": "Copy data from 300 PDFs into Google Sheets. Many hires on our account.",
+            "ciphertext": "~010000000000000008",
+            "createdDateTime": "2026-10-01T07:00:00.000Z",
+            "publishedDateTime": "2026-10-01T07:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "0.0",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": "DEFAULT",
+            "hourlyBudgetMin": {
+              "rawValue": "8",
+              "currency": "USD"
+            },
+            "hourlyBudgetMax": {
+              "rawValue": "12",
+              "currency": "USD"
+            },
+            "totalApplicants": 6,
+            "skills": [
+              {
+                "name": "data-entry",
+                "prettyName": "Data Entry"
+              }
+            ],
+            "client": {
+              "totalHires": 90,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "11000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 90,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000009",
+            "title": "Server side GTM migration",
+            "description": "Migrate our client side GTM to server side GTM on Cloud Run, set up GA4 and Meta CAPI through it.",
+            "ciphertext": "~010000000000000009",
+            "createdDateTime": "2026-09-28T14:00:00.000Z",
+            "publishedDateTime": "2026-09-28T14:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "3500",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 5,
+            "skills": [
+              {
+                "name": "google-tag-manager",
+                "prettyName": "Google Tag Manager"
+              },
+              {
+                "name": "google-cloud-platform",
+                "prettyName": "Google Cloud Platform"
+              }
+            ],
+            "client": {
+              "totalHires": 30,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "90000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 30,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000010",
+            "title": "Internal knowledge base Q&A bot on Notion",
+            "description": "We want an internal assistant that answers employee questions from our Notion wiki and Google Drive. Slack bot interface. Security matters: SSO and per-team permissions.",
+            "ciphertext": "~01000000000000000a",
+            "createdDateTime": "2026-10-01T04:00:00.000Z",
+            "publishedDateTime": "2026-10-01T04:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "8000",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 2,
+            "skills": [
+              {
+                "name": "notion-api",
+                "prettyName": "Notion API"
+              },
+              {
+                "name": "slack-api",
+                "prettyName": "Slack API"
+              },
+              {
+                "name": "rag",
+                "prettyName": "RAG"
+              }
+            ],
+            "client": {
+              "totalHires": null,
+              "totalPostedJobs": 10,
+              "totalSpent": null,
+              "verificationStatus": "VERIFIED",
+              "totalReviews": null,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000011",
+            "title": "Fix our n8n workflows and add AI classification step",
+            "description": "We have 12 n8n workflows connecting Pipedrive, Gmail and Google Sheets. Several break weekly. Want them stabilized with error alerts in Slack, and an AI step that classifies inbound emails by intent.",
+            "ciphertext": "~01000000000000000b",
+            "createdDateTime": "2026-09-30T22:00:00.000Z",
+            "publishedDateTime": "2026-09-30T22:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "0.0",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": "DEFAULT",
+            "hourlyBudgetMin": {
+              "rawValue": "45",
+              "currency": "USD"
+            },
+            "hourlyBudgetMax": {
+              "rawValue": "70",
+              "currency": "USD"
+            },
+            "totalApplicants": 11,
+            "skills": [
+              {
+                "name": "n8n",
+                "prettyName": "n8n"
+              },
+              {
+                "name": "pipedrive",
+                "prettyName": "Pipedrive"
+              },
+              {
+                "name": "openai-api",
+                "prettyName": "OpenAI API"
+              }
+            ],
+            "client": {
+              "totalHires": 6,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "18000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 6,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "1700000000000000012",
+            "title": "Mobile game artwork",
+            "description": "Need 2D sprites for a mobile puzzle game.",
+            "ciphertext": "~01000000000000000c",
+            "createdDateTime": "2026-10-01T11:00:00.000Z",
+            "publishedDateTime": "2026-10-01T11:00:00.000Z",
+            "engagement": null,
+            "duration": null,
+            "durationLabel": null,
+            "experienceLevel": "EXPERT",
+            "category": "Web, Mobile & Software Dev",
+            "subcategory": null,
+            "amount": {
+              "rawValue": "1200",
+              "currency": "USD"
+            },
+            "hourlyBudgetType": null,
+            "hourlyBudgetMin": null,
+            "hourlyBudgetMax": null,
+            "totalApplicants": 1,
+            "skills": [
+              {
+                "name": "2d-art",
+                "prettyName": "2D Art"
+              }
+            ],
+            "client": {
+              "totalHires": 5,
+              "totalPostedJobs": 10,
+              "totalSpent": {
+                "rawValue": "25000",
+                "currency": "USD"
+              },
+              "verificationStatus": "VERIFIED",
+              "totalReviews": 5,
+              "totalFeedback": 4.9,
+              "location": {
+                "country": "United States"
+              }
+            }
+          }
+        }
+      ],
+      "pageInfo": {
+        "endCursor": null,
+        "hasNextPage": false
+      }
+    }
+  }
+}

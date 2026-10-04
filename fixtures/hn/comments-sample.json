@@ -1,0 +1,65 @@
+{
+  "hits": [
+    {
+      "objectID": "45000001",
+      "created_at": "2026-10-01T07:00:00.000Z",
+      "created_at_i": 1790838000,
+      "author": "user1",
+      "comment_text": "SEEKING FREELANCER | Remote | AI support bot<p>We&#x27;re a 20-person SaaS looking for help building a chatbot that answers customer questions from our docs (Zendesk + Markdown). Budget: $8,000 fixed. Ideally done in 3 weeks.<p>Email jobs@example.com",
+      "parent_id": 45000000,
+      "story_id": 45000000,
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (October 2026)"
+    },
+    {
+      "objectID": "45000002",
+      "created_at": "2026-10-01T03:00:00.000Z",
+      "created_at_i": 1790823600,
+      "author": "user2",
+      "comment_text": "SEEKING FREELANCER - Remote (US timezones)<p>Need someone to wire up Meta CAPI and Google Ads enhanced conversions for our ecommerce site. $90-120/hr, ~40 hours.<p>Contact: <a href=\"mailto:ops@example.org\">ops@example.org</a>",
+      "parent_id": 45000000,
+      "story_id": 45000000,
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (October 2026)"
+    },
+    {
+      "objectID": "45000003",
+      "created_at": "2026-10-01T00:00:00.000Z",
+      "created_at_i": 1790812800,
+      "author": "user3",
+      "comment_text": "SEEKING WORK | Remote | Full stack dev, 10 years Python/React<p>Email me@example.net",
+      "parent_id": 45000000,
+      "story_id": 45000000,
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (October 2026)"
+    },
+    {
+      "objectID": "45000004",
+      "created_at": "2026-09-30T16:00:00.000Z",
+      "created_at_i": 1790784000,
+      "author": "user4",
+      "comment_text": "Nice thread, good luck everyone.",
+      "parent_id": 45000001,
+      "story_id": 45000000,
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (October 2026)"
+    },
+    {
+      "objectID": "45000005",
+      "created_at": "2026-09-30T10:00:00.000Z",
+      "created_at_i": 1790762400,
+      "author": "user5",
+      "comment_text": "SEEKING FREELANCER | Remote<p>Small business needs automation between our forms, Google Sheets and Slack, with AI to sort requests. Paying $40/hr.",
+      "parent_id": 45000000,
+      "story_id": 45000000,
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (October 2026)"
+    },
+    {
+      "objectID": "45000006",
+      "created_at": "2026-09-28T04:00:00.000Z",
+      "created_at_i": 1790568000,
+      "author": "user6",
+      "comment_text": "SEEKING FREELANCER | Onsite NYC<p>Need a React Native developer for a fitness app. $15k project.",
+      "parent_id": 45000000,
+      "story_id": 45000000,
+      "story_title": "Ask HN: Freelancer? Seeking freelancer? (October 2026)"
+    }
+  ],
+  "nbPages": 1
+}
