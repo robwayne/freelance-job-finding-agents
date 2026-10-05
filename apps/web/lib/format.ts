@@ -47,3 +47,10 @@ export function duration(ms: number | null): string {
   const s = Math.round(ms / 1000);
   return s < 60 ? `${s}s` : `${Math.floor(s / 60)}m ${s % 60}s`;
 }
+
+/** A queued run nobody picked up for this long means no worker is running. */
+export const STUCK_QUEUE_MINUTES = 20;
+
+export function isStuckQueued(run: { status: string; queuedAt: Date } | null | undefined, now = new Date()): boolean {
+  return !!run && run.status === "queued" && now.getTime() - run.queuedAt.getTime() > STUCK_QUEUE_MINUTES * 60_000;
+}

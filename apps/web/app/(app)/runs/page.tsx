@@ -3,7 +3,7 @@ import Link from "next/link";
 import { z } from "zod";
 import { requireUser } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { dateTime, duration } from "@/lib/format";
+import { dateTime, duration, isStuckQueued } from "@/lib/format";
 import { withParams, type Params } from "@/lib/url";
 import { RunStatusBadge } from "@/components/ui";
 
@@ -78,6 +78,11 @@ export default async function RunsPage({ searchParams }: PageProps<"/runs">) {
                 </td>
                 <td className="px-3 py-2">
                   <RunStatusBadge status={run.status} />
+                  {isStuckQueued(run) && (
+                    <Link href="/status" className="mt-1 block text-xs text-amber-700 underline">
+                      waiting for worker
+                    </Link>
+                  )}
                 </td>
                 <td className="px-3 py-2 text-zinc-600">
                   {run.trigger}

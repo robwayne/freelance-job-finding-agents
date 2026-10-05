@@ -102,6 +102,7 @@ No setup needed. The worker reads top-level "SEEKING FREELANCER" posts from the 
 | Command | What it does |
 |---|---|
 | `pnpm dev` | Worker and web app together, with reload |
+| `pnpm worker:tick` | One scheduler pass, then exit (used by GitHub Actions or cron) |
 | `pnpm worker:once` | One run of every enabled agent, recorded in `runs` |
 | `pnpm worker:once --dry-run` | Full pipeline, prints results, writes nothing. Works without a database (default agent and settings) |
 | `pnpm worker:once --mock-llm` | Offline keyword scorer instead of the API (combine with `--dry-run`) |
@@ -187,6 +188,20 @@ Vercel deploys production from `main`.
 The web app uses the transaction pooler, which is the right choice for serverless functions. Each function instance keeps a small pool (3 connections).
 
 GitHub Pages won't work. It serves static files only, and this app needs a server for auth, database access and server actions. All three must stay server side so that no Supabase key or table data is exposed to the browser.
+
+### Worker on GitHub Actions (no server)
+
+`.github/workflows/worker.yml` runs `pnpm worker:tick` every 15 minutes on GitHub's machines. Each pass queues agents whose interval has elapsed, executes queued runs (including "Run now" from the web app), and exits.
+
+1. In GitHub, open the repo and go to **Settings > Secrets and variables > Actions > New repository secret**. Add:
+   - `DATABASE_URL_SESSION`: the Supabase **Session pooler** string (port 5432), with the password filled in.
+   - `ANTHROPIC_API_KEY`
+   - optionally `UPWORK_CLIENT_ID`, `UPWORK_CLIENT_SECRET` and `UPWORK_REDIRECT_URI`, once your Upwork key is approved.
+2. Go to **Actions > Worker > Run workflow** to start the first pass now instead of waiting for the schedule.
+
+Trade-offs compared to a server:
+- "Run now" waits for the next pass, up to about 15 minutes. GitHub can also delay scheduled runs at busy times.
+- Each pass takes about 1-2 minutes of Actions time. Public repos run free. Private repos on the free plan get 2,000 minutes a month, and every 15 minutes uses more than that. If you hit the limit, change the cron to `*/30` or `0 * * * *`, or move to a server.
 
 ### Worker on a VPS
 

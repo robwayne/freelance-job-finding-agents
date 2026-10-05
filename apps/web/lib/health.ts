@@ -2,6 +2,7 @@ import "server-only";
 import { sql } from "drizzle-orm";
 import { db } from "./db";
 import { env } from "./env";
+import { STUCK_QUEUE_MINUTES } from "./format";
 
 export interface Check {
   name: string;
@@ -111,6 +112,33 @@ export async function runHealthChecks(): Promise<Check[]> {
     });
   } catch (err) {
     checks.push({ name: "Tables and seed data", ok: false, detail: errorText(err), hint: hintFor(err) });
+    return checks;
+  }
+
+  try {
+    const rows = (await db().execute(sql`
+      select
+        (select min(queued_at) from runs where status = 'queued') as oldest_queued,
+        (select max(coalesce(heartbeat_at, finished_at, started_at)) from runs where started_at is not null) as last_activity
+    `)) as unknown as { oldest_queued: string | Date | null; last_activity: string | Date | null }[];
+    const toDate = (v: string | Date | null | undefined) => (v ? new Date(v) : null);
+    const oldest = toDate(rows[0]?.oldest_queued);
+    const last = toDate(rows[0]?.last_activity);
+    const waitingMin = oldest ? Math.round((Date.now() - oldest.getTime()) / 60_000) : 0;
+    const stuck = waitingMin > STUCK_QUEUE_MINUTES;
+    checks.push({
+      name: "Worker",
+      ok: !stuck,
+      detail: [
+        oldest ? `Oldest queued run waiting ${waitingMin} min` : "No runs waiting",
+        last ? `last worker activity ${last.toISOString().replace("T", " ").slice(0, 16)} UTC` : "the worker has never run",
+      ].join("; "),
+      hint: stuck
+        ? "Nothing is picking up runs. Start the worker: either enable the GitHub Actions workflow (add the DATABASE_URL_SESSION and ANTHROPIC_API_KEY repository secrets, see README > Worker on GitHub Actions) or run the Docker image on a server."
+        : undefined,
+    });
+  } catch (err) {
+    checks.push({ name: "Worker", ok: false, detail: errorText(err), hint: hintFor(err) });
   }
   return checks;
 }

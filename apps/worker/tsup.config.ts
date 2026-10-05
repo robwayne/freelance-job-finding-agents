@@ -1,7 +1,7 @@
 import { defineConfig } from "tsup";
 
 export default defineConfig({
-  entry: ["src/index.ts", "src/cli/once.ts", "src/cli/rescore.ts", "src/cli/upwork-auth.ts"],
+  entry: ["src/index.ts", "src/cli/once.ts", "src/cli/rescore.ts", "src/cli/tick.ts", "src/cli/upwork-auth.ts"],
   format: ["esm"],
   target: "node20",
   platform: "node",

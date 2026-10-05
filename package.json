@@ -16,7 +16,8 @@
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
     "test": "vitest run",
-    "db:sql": "pnpm --filter @jf/db sql"
+    "db:sql": "pnpm --filter @jf/db sql",
+    "worker:tick": "pnpm --filter @jf/worker tick"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",

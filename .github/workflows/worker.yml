@@ -1,0 +1,43 @@
+# Runs the job-finder worker on GitHub's machines, so no server is needed.
+# Each run does one scheduler pass (pnpm worker:tick): queue agents whose interval has elapsed,
+# execute queued runs (including "Run now" from the web app), then exit.
+#
+# Setup: Settings > Secrets and variables > Actions > New repository secret:
+#   DATABASE_URL_SESSION  Supabase Session pooler string (port 5432)
+#   ANTHROPIC_API_KEY
+#   UPWORK_CLIENT_ID, UPWORK_CLIENT_SECRET, UPWORK_REDIRECT_URI  (optional, once the key is approved)
+name: Worker
+
+on:
+  schedule:
+    # GitHub may delay scheduled runs by a few minutes at busy times.
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: worker
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  tick:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --filter @jf/worker...
+      - run: pnpm worker:tick
+        env:
+          DATABASE_URL_SESSION: ${{ secrets.DATABASE_URL_SESSION }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          UPWORK_CLIENT_ID: ${{ secrets.UPWORK_CLIENT_ID }}
+          UPWORK_CLIENT_SECRET: ${{ secrets.UPWORK_CLIENT_SECRET }}
+          UPWORK_REDIRECT_URI: ${{ secrets.UPWORK_REDIRECT_URI }}
+          LOG_PRETTY: "1"

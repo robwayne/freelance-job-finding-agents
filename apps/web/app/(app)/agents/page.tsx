@@ -2,7 +2,7 @@ import { getSettings, listAgentSummaries } from "@jf/db";
 import Link from "next/link";
 import { requireUser } from "@/lib/auth";
 import { db } from "@/lib/db";
-import { age, dateTime } from "@/lib/format";
+import { age, dateTime, isStuckQueued } from "@/lib/format";
 import { Badge, RunStatusBadge } from "@/components/ui";
 import { AgentActions } from "./agent-actions";
 
@@ -65,7 +65,19 @@ export default async function AgentsPage() {
                   )}
                 </td>
                 <td className="px-3 py-2 text-zinc-600">
-                  {!agent.enabled ? "paused" : activeRun ? "in progress" : nextRunAt && nextRunAt <= now ? "due now" : dateTime(nextRunAt)}
+                  {isStuckQueued(activeRun, now) ? (
+                    <Link href="/status" className="text-amber-700 underline">
+                      waiting for worker
+                    </Link>
+                  ) : !agent.enabled ? (
+                    "paused"
+                  ) : activeRun ? (
+                    activeRun.status === "queued" ? "starting soon" : "running"
+                  ) : nextRunAt && nextRunAt <= now ? (
+                    "due now"
+                  ) : (
+                    dateTime(nextRunAt)
+                  )}
                 </td>
                 <td className="px-3 py-2 text-right tabular-nums">
                   <Link href={`/jobs?agent=${agent.id}`} className="hover:underline">
@@ -86,6 +98,11 @@ export default async function AgentsPage() {
           </tbody>
         </table>
       </div>
+      {agents.some((a) => isStuckQueued(a.activeRun, now)) && (
+        <p className="rounded-md bg-amber-50 px-3 py-2 text-sm text-amber-900">
+          A run has been queued for over 20 minutes, so the worker isn&apos;t running. The <Link href="/status" className="underline">status page</Link> explains how to start it.
+        </p>
+      )}
       <p className="text-xs text-zinc-500">
         The worker checks every ~15 seconds for due agents and runs queued from here. &ldquo;Run now&rdquo; queues a run; it does
         nothing if one is already queued or running.
