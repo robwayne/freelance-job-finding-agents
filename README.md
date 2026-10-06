@@ -74,22 +74,18 @@ Requires Node 20+ and pnpm 10.
 
 ### Upwork API credentials
 
-Without credentials the Upwork source reads `fixtures/upwork/*.json`. In auto mode it switches to the live API once credentials exist. You can change the mode on the Settings page.
+Without credentials the Upwork source reads `fixtures/upwork/*.json` (sample data). Untick Upwork on the agent until you've connected a real key.
 
-1. Sign in to Upwork with the account that will own the key, and request one at https://www.upwork.com/developer/keys/apply.
-2. Pick **OAuth 2.0** and describe the use case honestly: internal tool, read-only job search for our own agency, no automated proposals.
-3. Set the callback URL (for example `http://localhost:8080/callback`). It must exactly match `UPWORK_REDIRECT_URI`.
-4. Enable these permissions (scopes):
-   - **Common Entities - Read-Only Access**
-   - **Read marketplace Job Postings**
-5. Wait for approval. Upwork reviews keys manually, and it can take days.
-6. Put `UPWORK_CLIENT_ID`, `UPWORK_CLIENT_SECRET` and `UPWORK_REDIRECT_URI` in `.env`.
-7. Authorize once:
-   ```bash
-   pnpm --filter @jf/worker upwork:auth                 # prints a URL; open it and approve
-   pnpm --filter @jf/worker upwork:auth --code <code>   # code from the redirect URL
-   ```
-   This stores the tokens in the `integration_tokens` table. The worker refreshes the access token and stores rotated refresh tokens there. If your key supports the client credentials grant, set `UPWORK_GRANT_TYPE=client_credentials` and skip this step.
+1. Request a key at https://www.upwork.com/developer/keys/apply, signed in as the account that will own it. Describe it as an internal, read-only job search tool for your agency.
+2. **Callback URL:** `https://<your-vercel-domain>/upwork/callback`. The dashboard shows the exact value under Settings > Upwork connection.
+3. **Permissions:** only **Common Entities - Read-Only Access** and **Read marketplace Job Postings**.
+4. Once approved, add `UPWORK_CLIENT_ID` and `UPWORK_CLIENT_SECRET` in two places:
+   - **Vercel** environment variables, then redeploy.
+   - **GitHub Actions** secrets, for the worker.
+5. In the dashboard, go to **Settings > Upwork connection > Connect Upwork** and approve on Upwork. The tokens are stored in the `integration_tokens` table, and the worker refreshes them automatically.
+6. Tick **Upwork** again on the agent.
+
+`pnpm --filter @jf/worker upwork:auth` still does the same authorization from a terminal if you prefer. If your key supports the client credentials grant, set `UPWORK_GRANT_TYPE=client_credentials` and skip the connect step.
 
 Search uses `marketplaceJobPostingsSearch` on `https://api.upwork.com/graphql`, sorted by recency, once per query in Settings > Upwork search queries. Results are merged.
 
